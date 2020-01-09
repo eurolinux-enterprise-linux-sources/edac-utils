@@ -1,0 +1,17 @@
+commit c29b14d0d07184bd2d250bf355a1dee6faa47572
+Author: Mark A. Grondona <mgrondona@llnl.gov>
+Date:   Wed Nov 9 22:15:23 2011 +0000
+
+    edac-util: do not print "no errors" if --quiet
+
+--- a/src/util/edac-util.c
++++ b/src/util/edac-util.c
+@@ -472,7 +472,7 @@ static void default_report (struct prog_ctx *ctx)
+         }
+     }
+ 
+-    if (!count && !ctx->verbose)
++    if (!count && !ctx->quiet)
+         fprintf (stdout, "edac-util: No errors to report.\n");
+ 
+     edac_handle_reset (ctx->edac);
