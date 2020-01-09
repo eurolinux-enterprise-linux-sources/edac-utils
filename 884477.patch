@@ -1,0 +1,31 @@
+------------------------------------------------------------------------
+r111 | grondo | 2009-01-30 18:23:15 -0500 (Fri, 30 Jan 2009) | 11 lines
+
+Fix libedac.so library version in 0.16 release
+
+The libtool AGE of libedac.so was incremented for the 0.16
+release of edac-utils without a corresponding increase in
+CURRENT, which caused the libedac.so libtool version to
+decrement from 1.0.0 to 0.1.0.
+
+Instead, increment both AGE and CURRENT, since an interface
+was changed, but with backwards compatibility, and
+prepare to tag a 0.16.1.
+
+------------------------------------------------------------------------
+---
+ META |    4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+--- edac-utils-0.16.orig/META	2008-12-31 13:53:43.000000000 -0500
++++ edac-utils-0.16/META	2013-07-01 14:47:36.824949675 -0400
+@@ -1,7 +1,7 @@
+   Author:        Mark Grondona <mgrondona@llnl.gov>
+-  Date:          2008-12-31
++  Date:          2009-01-30
+   Lt_age:        1
+-  Lt_current:    1
++  Lt_current:    2
+   Lt_revision:   0
+   Name:          edac-utils
+   Release:       1
