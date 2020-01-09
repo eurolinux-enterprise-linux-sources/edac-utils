@@ -1,6 +1,6 @@
 Name:		edac-utils
 Version:	0.9
-Release:	15%{?dist}
+Release:	16%{?dist}
 Summary:	Userspace helper for kernel EDAC drivers
 
 Group:		System Environment/Base
@@ -23,7 +23,7 @@ Patch12:	no_strict_aliasing.patch
 Patch13:	edac_init-fix_status_return_value.patch
 
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}
-Requires:	hwdata, dmidecode, sysfsutils
+Requires:	hwdata, dmidecode, sysfsutils, libsysfs
 Requires(post):	chkconfig
 Requires(preun): chkconfig
 # This is for /sbin/service
@@ -113,6 +113,9 @@ fi
 %{_includedir}/edac.h
 
 %changelog
+* Wed Mar 11 2015 Aristeu Rozanski <aris@redhat.com> - 0.9-16
+- Require libsysfs [1200884]
+
 * Wed May 28 2014 Aristeu Rozanski <aris@redhat.com> - 0.9-15
 - Fixed init script return value for 'status' command [679812]
 
