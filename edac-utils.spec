@@ -1,6 +1,6 @@
 Name:		edac-utils
 Version:	0.16
-Release:	14%{?dist}
+Release:	15%{?dist}
 Summary:	Userspace helper for kernel EDAC drivers
 
 Group:		System Environment/Base
@@ -13,6 +13,7 @@ Source1:	edac.service
 Patch:		884477.patch
 Patch2:		edac_utils-do_not_exit_if_dmidecode_isnt_found.patch
 Patch3:		edac_utils-dont_try_to_use_dmidecode_if_not_installed.patch
+Patch4:		edac-ctl-man-missing-options.patch
 
 %ifarch %{ix86} x86_64
 Requires:	dmidecode
@@ -46,6 +47,7 @@ for %{name}.
 %patch -p1
 %patch2 -p1
 %patch3 -p1
+%patch4 -p1
 
 %build
 %configure --disable-static
@@ -108,6 +110,9 @@ fi
 %{_includedir}/edac.h
 
 %changelog
+* Fri Nov 13 2015 Aristeu Rozanski <aris@redhat.com> - 0.16-15
+- Add missing manual entries for two edac-ctl options [1147564]
+
 * Mon Oct 05 2015 Aristeu Rozanski <aris@redhat.com> - 0.16-14
 - Don't try to use dmidecode if not installed [1125491]
 
