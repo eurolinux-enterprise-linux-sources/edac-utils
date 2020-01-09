@@ -1,6 +1,6 @@
 Name:		edac-utils
 Version:	0.9
-Release:	11.2%{?dist}
+Release:	14%{?dist}
 Summary:	Userspace helper for kernel EDAC drivers
 
 Group:		System Environment/Base
@@ -11,6 +11,15 @@ Patch0:		edac_ctl-remove_driver_loading.patch
 Patch1:		edac_init-fix_messages.patch
 Patch2:		edac_ctl-fix_model_parsing.patch
 Patch3:		edac_init-sysv-compliance.patch
+Patch4:		edac_init-only_return_defined_error_codes.patch
+Patch5:		labels.db-Add-new-labels-from-edac-utils-0.16.patch
+Patch6:		libedac-allow-handling-up-to-6-channels-instead-of-2.patch
+Patch7:		libedac-Returns-an-error-if-get_sysfs_uint_attr-fail.patch
+Patch8:		edac-util.1-Fix-a-few-mistakes-at-the-spec.patch
+Patch9:		edac-ctl-add-delay-status-and-improve-motherboard-id.patch
+Patch10:	add-more-labels-to-sync-with-rhel5.patch
+Patch11:	edac_ctl_improve_parser.patch
+Patch12:	no_strict_aliasing.patch
 
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}
 Requires:	hwdata, dmidecode, sysfsutils
@@ -45,6 +54,15 @@ for %{name}.
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
+%patch4 -p1
+%patch5 -p1
+%patch6 -p1
+%patch7 -p1
+%patch8 -p1
+%patch9 -p1
+%patch10 -p1
+%patch11 -p1
+%patch12 -p1
 
 %build
 %configure --disable-static
@@ -93,6 +111,20 @@ fi
 %{_includedir}/edac.h
 
 %changelog
+* Wed Apr 27 2011 Mauro Carvalho Chehab <mchehab@redhat.com> - 0.9-14
+- Fix a gcc new warning: warning: dereferencing pointer 'pfree' does break strict-aliasing rules
+
+* Fri Apr 22 2011 Mauro Carvalho Chehab <mchehab@redhat.com> - 0.9-13
+- Enhance motherboard dmi decoding to use DMI type 1, if type 2 
+  is not available
+
+* Thu Oct  4 2010 Mauro Carvalho Chehab <mchehab@redhat.com> - 0.9-12
+- Add improvements from upstream version 0.16, in order to support newer
+  edac drivers. Also, sync edac labels with RHEL5 package
+
+* Thu Sep  9 2010 Mauro Carvalho Chehab <mchehab@redhat.com> - 0.9-11.3
+- return 4 for lack of permissions, 1 for any other error at the edac-ctl
+
 * Mon Jun 12 2010 Mauro Carvalho Chehab <mchehab@redhat.com> - 0.9-11.2
 - Make init script compliant with https://fedoraproject.org/wiki/Packaging/SysVInitScript
 

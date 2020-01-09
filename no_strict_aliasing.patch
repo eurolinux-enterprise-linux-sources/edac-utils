@@ -1,0 +1,13 @@
+diff --git a/src/util/Makefile.in b/src/util/Makefile.in
+index 0feef5c..8bfc4c5 100644
+--- a/src/util/Makefile.in
++++ b/src/util/Makefile.in
+@@ -67,7 +67,7 @@ DEFAULT_INCLUDES = -I. -I$(srcdir) -I$(top_builddir)
+ depcomp = $(SHELL) $(top_srcdir)/config/depcomp
+ am__depfiles_maybe = depfiles
+ COMPILE = $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) \
+-	$(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
++	$(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -fno-strict-aliasing
+ LTCOMPILE = $(LIBTOOL) --mode=compile --tag=CC $(CC) $(DEFS) \
+ 	$(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) \
+ 	$(AM_CFLAGS) $(CFLAGS)

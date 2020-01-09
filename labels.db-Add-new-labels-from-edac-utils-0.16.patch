@@ -1,0 +1,50 @@
+From a48caba6743fb91023596d6359ebbeb581840f53 Mon Sep 17 00:00:00 2001
+From: Mauro Carvalho Chehab <mchehab@redhat.com>
+Date: Mon, 4 Oct 2010 12:08:46 -0300
+Subject: [PATCH 1/4] labels.db: Add new labels from edac-utils-0.16
+
+Signed-off-by: Mauro Carvalho Chehab <mchehab@redhat.com>
+---
+ src/etc/labels.db |   29 +++++++++++++++++++++++++++++
+ 1 files changed, 29 insertions(+), 0 deletions(-)
+
+diff --git a/src/etc/labels.db b/src/etc/labels.db
+index bece289..84f327c 100644
+--- a/src/etc/labels.db
++++ b/src/etc/labels.db
+@@ -68,3 +68,32 @@ Vendor: Supermicro
+     DIMMC 2A: 3.0.0, 3.1.0; DIMMC 2B: 3.0.1, 3.1.1;
+     DIMMC 1A: 3.2.0, 3.3.0; DIMMC 1B: 3.2.1, 3.3.1;
+ 
++  Model: H8DA3-2
++    DIMMA 1B: 0.3.1; DIMMA 1A: 0.3.0;
++    DIMMA 2B: 0.1.1; DIMMA 2A: 0.1.0;
++    DIMMB 1B: 1.3.1; DIMMB 1A: 1.3.0;
++    DIMMB 2B: 1.1.1; DIMMB 2A: 1.1.0;
++
++Vendor: Dell Computer Corporation
++
++  Model: PowerEdge 1850
++    DIMM_1A: 0.7.0; DIMM_1B: 0.7.1;
++    DIMM_2A: 0.3.0; DIMM_2B: 0.3.1;
++    DIMM_3A: 0.1.0; DIMM_3B: 0.1.1;
++
++
++Vendor: ASUSTeK Computer INC.
++
++  Model: A8N5X, A8N-E
++     DIMM_A1: 0.0.0, 0.1.0; DIMM_B1: 0.0.1, 0.1.1
++     DIMM_A2: 0.2.0, 0.3.0; DIMM_B2: 0.2.1, 0.3.1
++
++  Model: KFN5-D SLI
++     DIMM_A1: 0.0.0, 0.1.0; DIMM_B1: 0.0.1, 0.1.1
++     DIMM_A2: 0.2.0, 0.3.0; DIMM_B2: 0.2.1, 0.3.1
++     DIMM_A3: 1.0.0, 1.1.0; DIMM_B3: 1.0.1, 1.1.1
++     DIMM_A4: 1.2.0, 1.3.0; DIMM_B4: 1.2.1, 1.3.1
++
++  Model: M3A32-MVP DELUXE
++    DIMM_A1: 0.0.0, 0.1.0; DIMM_B1: 0.0.1, 0.1.1
++    DIMM_A2: 0.2.0, 0.3.0; DIMM_B2: 0.2.1, 0.3.1
+-- 
+1.7.1
+

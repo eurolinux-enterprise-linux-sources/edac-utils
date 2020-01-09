@@ -1,0 +1,61 @@
+Fixes edac-ctl parser for some motherboard types
+
+Not all systems provide DMI type 2 (base board information). 
+Some provide only DMI type 1 (system information).
+
+Fixes the dmidecode parser to fallback to DMI type 1, if type 2
+is not available.
+
+Found by Ales Zelinka <azelinka@redhat.com> on some HP 7300
+machines, like the Proliant DL 360 G4p machine, that reports
+only:
+
+Handle 0x0100, DMI type 1, 25 bytes
+System Information
+	Manufacturer: HP
+	Product Name: ProLiant DL360 G4p
+
+Signed-off-by: Mauro Carvalho Chehab <mchehab@redhat.com>
+
+--- edac-utils-0.9/src/util/edac-ctl	2010-10-04 17:06:21.000000000 -0400
++++ edac-utils-0.9/src/util/edac-ctl	2011-04-22 13:09:09.854969302 -0400
+@@ -162,6 +162,7 @@ sub get_mainboard_info {
+ 
+ sub guess_vendor_model_dmidecode {
+     my ($vendor, $model);
++    my ($system_vendor, $system_model);
+     my $line = 0;
+ 
+     $< == 0 || die "Must be root to run dmidecode\n";
+@@ -174,20 +175,30 @@ sub guess_vendor_model_dmidecode {
+     while (<DMI>) {
+         $line++;
+ 
+-        /^(\s*)(board|base board) information/i || next LINE;
++        /^(\s*)(board|base board|system) information/i || next LINE;
+         my $indent = $1;
++	my $type = $2;
+ 
+         while ( <DMI> ) {
+             /^(\s*)/;
+             $1 lt $indent && last LINE;
+             $indent = $1;
++            if ($type eq "system") {
++                /(?:manufacturer|vendor):\s*(.*\S)\s*/i && ( $system_vendor = $1 );
++                /product(?: name)?:\s*(.*\S)\s*/i       && ( $system_model  = $1 );
++            } else {
+             /(?:manufacturer|vendor):\s*(.*\S)\s*/i && ( $vendor = $1 );
+             /product(?: name)?:\s*(.*\S)\s*/i       && ( $model  = $1 );
++            }
+             last LINE if ($vendor && $model);
+         }
+     }
+ 
+     close (DMI);
++
++    $vendor = $system_vendor if ($vendor eq "");
++    $model = $system_model if ($model eq "");
++
+     return ($vendor, $model);
+ }
+ 

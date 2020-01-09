@@ -1,0 +1,44 @@
+From 0ff0e9e12c71a7697e90077892be8666ed42e4ed Mon Sep 17 00:00:00 2001
+From: Mauro Carvalho Chehab <mchehab@redhat.com>
+Date: Mon, 4 Oct 2010 17:55:07 -0300
+Subject: [PATCH] Add labels found on RHEL5 package
+
+Signed-off-by: Mauro Carvalho Chehab <mchehab@redhat.com>
+---
+ src/etc/labels.db |   20 ++++++++++++++++++++
+ 1 files changed, 20 insertions(+), 0 deletions(-)
+
+diff --git a/src/etc/labels.db b/src/etc/labels.db
+index 84f327c..60abb2d 100644
+--- a/src/etc/labels.db
++++ b/src/etc/labels.db
+@@ -68,6 +68,26 @@ Vendor: Supermicro
+     DIMMC 2A: 3.0.0, 3.1.0; DIMMC 2B: 3.0.1, 3.1.1;
+     DIMMC 1A: 3.2.0, 3.3.0; DIMMC 1B: 3.2.1, 3.3.1;
+ 
++Vendor: HP
++
++ Model: ProLiant DL585 G1
++   CPU1D2: 0.7.0, 0.6.0; CPU1D1: 0.7.1, 0.6.1;
++   CPU1D4: 0.4.0, 0.5.0; CPU1D3: 0.4.1, 0.5.1;
++   CPU1D6: 0.2.0, 0.3.0; CPU1D5: 0.2.1, 0.3.1;
++   CPU1D8: 0.0.0, 0.1.0; CPU1D7: 0.0.1, 0.1.1;
++   CPU2D2: 1.7.0, 1.6.0; CPU2D1: 1.7.1, 1.6.1;
++   CPU2D4: 1.4.0, 1.5.0; CPU2D3: 1.4.1, 1.5.1;
++   CPU2D6: 1.2.0, 1.3.0; CPU2D5: 1.2.1, 1.3.1;
++   CPU2D8: 1.0.0, 1.1.0; CPU2D7: 1.0.1, 1.1.1;
++   CPU3D2: 2.7.0, 2.6.0; CPU3D1: 2.7.1, 2.6.1;
++   CPU3D4: 2.4.0, 2.5.0; CPU3D3: 2.4.1, 2.5.1;
++   CPU3D6: 2.2.0, 2.3.0; CPU3D5: 2.2.1, 2.3.1;
++   CPU3D8: 2.0.0, 2.1.0; CPU3D7: 2.0.1, 2.1.1;
++   CPU4D2: 3.7.0, 3.6.0; CPU4D1: 3.7.1, 3.6.1;
++   CPU4D4: 3.4.0, 3.5.0; CPU4D3: 3.4.1, 3.5.1;
++   CPU4D6: 3.2.0, 3.3.0; CPU4D5: 3.2.1, 3.3.1;
++   CPU4D8: 3.0.0, 3.1.0; CPU4D7: 3.0.1, 3.1.1;
++
+   Model: H8DA3-2
+     DIMMA 1B: 0.3.1; DIMMA 1A: 0.3.0;
+     DIMMA 2B: 0.1.1; DIMMA 2A: 0.1.0;
+-- 
+1.7.1
+

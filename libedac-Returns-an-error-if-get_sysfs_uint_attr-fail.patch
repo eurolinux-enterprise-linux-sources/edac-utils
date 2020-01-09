@@ -1,0 +1,35 @@
+From 65a59993bf3a61837c2335f571e501ae3df6262b Mon Sep 17 00:00:00 2001
+From: Mauro Carvalho Chehab <mchehab@redhat.com>
+Date: Mon, 4 Oct 2010 12:15:13 -0300
+Subject: [PATCH 3/4] libedac: Returns an error if get_sysfs_uint_attr fails
+
+Signed-off-by: Mauro Carvalho Chehab <mchehab@redhat.com>
+---
+ src/lib/libedac.c |   11 +++++++----
+ 1 files changed, 7 insertions(+), 4 deletions(-)
+
+diff --git a/src/lib/libedac.c b/src/lib/libedac.c
+index f900edf..fe8adad 100644
+--- a/src/lib/libedac.c
++++ b/src/lib/libedac.c
+@@ -564,10 +564,13 @@ static int edac_totals_refresh (edac_handle *edac)
+     struct dl_node *i;
+ 
+ 
+-    if (edac->pci)
+-        get_sysfs_uint_attr (edac->pci, 
+-                             (unsigned int *) &edac->pci_parity_count, 
+-                             "pci_parity_count");
++    if (edac->pci) {
++        int rc = get_sysfs_uint_attr (edac->pci, 
++                           (unsigned int *) &edac->pci_parity_count, 
++                           "pci_parity_count");
++        if (rc < 0)
++            return (-1);
++    }
+ 
+     if (edac->mc_list->count == 0) {
+         edac->error_num = EDAC_MC_OPEN_FAILED;
+-- 
+1.7.1
+
