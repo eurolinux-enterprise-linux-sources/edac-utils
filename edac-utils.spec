@@ -1,6 +1,6 @@
 Name:		edac-utils
 Version:	0.9
-Release:	14%{?dist}
+Release:	15%{?dist}
 Summary:	Userspace helper for kernel EDAC drivers
 
 Group:		System Environment/Base
@@ -20,6 +20,7 @@ Patch9:		edac-ctl-add-delay-status-and-improve-motherboard-id.patch
 Patch10:	add-more-labels-to-sync-with-rhel5.patch
 Patch11:	edac_ctl_improve_parser.patch
 Patch12:	no_strict_aliasing.patch
+Patch13:	edac_init-fix_status_return_value.patch
 
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}
 Requires:	hwdata, dmidecode, sysfsutils
@@ -63,6 +64,7 @@ for %{name}.
 %patch10 -p1
 %patch11 -p1
 %patch12 -p1
+%patch13 -p1
 
 %build
 %configure --disable-static
@@ -111,6 +113,9 @@ fi
 %{_includedir}/edac.h
 
 %changelog
+* Wed May 28 2014 Aristeu Rozanski <aris@redhat.com> - 0.9-15
+- Fixed init script return value for 'status' command [679812]
+
 * Wed Apr 27 2011 Mauro Carvalho Chehab <mchehab@redhat.com> - 0.9-14
 - Fix a gcc new warning: warning: dereferencing pointer 'pfree' does break strict-aliasing rules
 

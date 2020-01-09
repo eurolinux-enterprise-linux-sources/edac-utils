@@ -1,0 +1,18 @@
+---
+ src/etc/edac.init |    5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+--- edac-utils-0.9.orig/src/etc/edac.init	2014-05-28 10:01:58.000000000 -0400
++++ edac-utils-0.9/src/etc/edac.init	2014-05-28 10:06:53.758122454 -0400
+@@ -55,7 +55,10 @@ case "$1" in
+   start|restart|reload|condrestart|try-restart|force-reload)
+     service_start
+     ;;
+-  stop|status)
++  stop)
++    ;;
++  status)
++    exit 3;
+     ;;
+   usage)
+     usage
