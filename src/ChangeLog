@@ -1,0 +1,124 @@
+2007-05-07 Mark Grondona <mgrondona@llnl.gov>
+	* src/lib/edac.3.in, src/util/edac-util.1.in, 
+	  src/util/edac-ctl.8.in :
+	  Add manpages for libedac, edac-util, and edac-ctl.
+
+	* src/lib/Makefile.am, src/util/Makefile.am,
+	  configure.ac : Changes for new manpages.
+
+	* : tag version 0.9.
+
+2007-05-07 Mark Grondona <mgrondona@llnl.gov>
+
+	* : Added official UCRL number.
+
+2007-04-25 Mark Grondona <mgrondona@llnl.gov>
+
+	* src/util/edac-util.c : Issue "No errors to report." message to
+	  stdout, not stderr.
+
+	* : tag version 0.8.
+
+2007-04-18 Mark Grondona <mgrondona@llnl.gov>
+
+	* src/util/edac-util.c : Default report changed to report any
+	  DIMM (or unknown location) with an error count. This is more
+	  useful for diagnosis and thus makes sense to be the defualt.
+	  Old default changed to "simple" report.
+
+	* src/util/edac-util.c : Also report "noinfo" CE and UE count
+	  in full report.
+
+	* src/etc/labels.db : Switch DIMMC and DIMMD locations for H8QM8.
+
+	* src/util/edac-ctl : Add registered labels to --print-labels
+	  output and change output format.
+
+	* : tag version 0.7. 
+
+2007-03-15 Mark Grondona <mgrondona@llnl.gov>
+
+	* src/util/edac-ctl : Just ignore sysfs labels files that do
+	  not exist. Probably is just unpopulated memory banks.
+
+	* src/etc/labels.db : Add Supermicro H8QME.
+
+	* : tag version 0.6. 
+
+2006-10-13 Mark Grondona <mgrondona@llnl.gov>
+
+	* src/util/edac-ctl : Fix bug in labels.db parsing which required
+	  at least one comma to be used after each DIMM label.
+
+	* src/util/edact-ctl : Allow whitespace separated vendor and model
+	  to --mainboard= as well as colon separated values.
+
+	* src/etc/labels.db : Add Supermicro H8DCE.
+
+	* : tag version 0.5.
+
+2006-05-10 Mark Grondona <mgrondona@llnl.gov>
+
+	* src/util/edac-ctl : Don't allow MB vendor/model to end in whitespace.
+	  Allow multi-word string for MB vendor (e.g. "TYAN Computer Corp").
+
+	* src/etc/labels.db : Add Tyan S2895 DIMM labels to labels.db.
+
+	* : tag version 0.4.
+
+2006-03-28 Mark Grondona <mgrondona@llnl.gov>
+
+	* README : Update with better description of edac-utils components.
+
+2006-03-27 Mark Grondona <mgrondona@llnl.gov>
+
+	* config/x_ac_libsysfs.m4, configure, config.h.in, 
+	  src/lib/libedac.c : 
+	  Check for sysfs_open_device_tree () in libsysfs instead of simply
+	  libsysfs-2.0 presence. (Later versions of libsysfs should have 
+	  this function.)
+
+2006-03-24 Mark Grondona <mgrondona@llnl.gov>
+
+	* config/x_ac_libsysfs.m4 : Check for libsysfs 2.0.
+
+	* configure, config.h.in : re-run ./bootstrap.
+
+	* src/lib/libedac.c : Add _sysfs_open_device_tree () for missing
+	  functionality when using libsysfs-2.0.
+
+	* configure, config/x_ac_libsysfs.m4 : Use AC_LINK_IFELSE instead
+	  of AC_COMPILE_IFELSE.
+
+	* src/util/edac-util.c : Fix option string so that '-r' can have
+	  optional argument.
+
+2006-03-21 Mark Grondona <mgrondona@llnl.gov>
+
+	* edac.spec : Fix permissions in specfile.
+
+	* src/lib/libedac.c : Quiet warnings when reading from EDAC sysfs
+	  files. In some EDAC implementations, this might just mean that
+	  the channel corresponding to the file does not exist.
+
+	* src/util/edac-ctl : Use syswrite instead of print to write
+	  to the dimm_labels files in /sys. Avoids hang in EDAC 
+	  implementations that return 0 for writes to these files.
+
+	* : tag version 0.3.
+
+2006-03-16 Mark Grondona <mgrondona@llnl.gov>
+
+	* : tag version 0.2.
+	
+2006-03-14 Mark Grondona <mgrondona@llnl.gov>
+
+	* : Initial commit.
+
+	* : tag version 0.1.
+
+	* src/util/edac-ctl : Fix typo preventing --register-labels from
+	  doing anything.
+
+	* src/util/edac-util.c : Generate error if a report is requested
+	  but no memory controller data is found in sysfs.

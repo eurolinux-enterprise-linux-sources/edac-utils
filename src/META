@@ -1,0 +1,8 @@
+  author:       Mark Grondona <mgrondona@llnl.gov>
+  date:         2007-05-08
+  lt_age:       0
+  lt_current:   1
+  lt_revision:  0
+  name:         edac-utils
+  release:      1
+  version:      0.9
