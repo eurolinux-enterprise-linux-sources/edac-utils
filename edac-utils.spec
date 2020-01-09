@@ -1,6 +1,6 @@
 Name:		edac-utils
 Version:	0.16
-Release:	7%{?dist}
+Release:	8%{?dist}
 Summary:	Userspace helper for kernel EDAC drivers
 
 Group:		System Environment/Base
@@ -104,6 +104,9 @@ fi
 %{_includedir}/edac.h
 
 %changelog
+* Fri Dec 27 2013 Daniel Mach <dmach@redhat.com> - 0.16-8
+- Mass rebuild 2013-12-27
+
 * Mon Jul 01 2013 Aristeu Rozanski <aris@redhat.com> - 0.16-7
 - including missing file
 
