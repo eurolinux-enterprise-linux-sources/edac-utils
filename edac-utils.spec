@@ -1,20 +1,16 @@
 Name:		edac-utils
 Version:	0.16
-Release:	16%{?dist}
+Release:	7%{?dist}
 Summary:	Userspace helper for kernel EDAC drivers
 
 Group:		System Environment/Base
 License:	GPLv2+
 URL:		http://sourceforge.net/projects/edac-utils/
 
-ExclusiveArch:	%{ix86} x86_64 %{arm} aarch64 %{power64}
+ExclusiveArch:	%{ix86} x86_64 %{arm}
 Source0:	http://dl.sourceforge.net/sourceforge/edac-utils/%{name}-%{version}.tar.bz2
 Source1:	edac.service
 Patch:		884477.patch
-Patch2:		edac_utils-do_not_exit_if_dmidecode_isnt_found.patch
-Patch3:		edac_utils-dont_try_to_use_dmidecode_if_not_installed.patch
-Patch4:		edac-ctl-man-missing-options.patch
-Patch5:		c29b14d0d07184bd2d250bf355a1dee6faa47572.patch
 
 %ifarch %{ix86} x86_64
 Requires:	dmidecode
@@ -46,10 +42,6 @@ for %{name}.
 %prep
 %setup -q
 %patch -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
 
 %build
 %configure --disable-static
@@ -112,33 +104,6 @@ fi
 %{_includedir}/edac.h
 
 %changelog
-* Tue Jan 08 2019 Aristeu Rozanski <aris@redhat.com> - 0.16-16
-- Don't print "no errors" if --quiet is used [1662858]
-
-* Fri Nov 13 2015 Aristeu Rozanski <aris@redhat.com> - 0.16-15
-- Add missing manual entries for two edac-ctl options [1147564]
-
-* Mon Oct 05 2015 Aristeu Rozanski <aris@redhat.com> - 0.16-14
-- Don't try to use dmidecode if not installed [1125491]
-
-* Mon Oct 05 2015 Aristeu Rozanski <aris@redhat.com> - 0.16-13
-- Do not exit if dmidecode isn't found [1125491]
-
-* Tue May 05 2015 Aristeu Rozanski <aris@redhat.com> - 0.16-12
-- Rebuilt for 7.2 [1184674]
-
-* Fri Aug 22 2014 Aristeu Rozanski <aris@redhat.com> - 0.16-11
-- Enable in all powerpc64 arches instead [1125491]
-
-* Fri Aug 08 2014 Aristeu Rozanski <aris@redhat.com> - 0.16-10
-- Enable ppc64le arch build [1125491]
-
-* Tue Jun 03 2014 Aristeu Rozanski <aris@redhat.com> - 0.16-9
-- Enable builds on aarch64 [967931]
-
-* Fri Dec 27 2013 Daniel Mach <dmach@redhat.com> - 0.16-8
-- Mass rebuild 2013-12-27
-
 * Mon Jul 01 2013 Aristeu Rozanski <aris@redhat.com> - 0.16-7
 - including missing file
 
